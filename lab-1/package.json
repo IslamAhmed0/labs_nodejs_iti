@@ -1,0 +1,14 @@
+{
+  "name": "v0.0.1",
+  "version": "0.0.1",
+  "description": "islam ahmed",
+  "main": "demo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "islam",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^7.2.0"
+  }
+}
