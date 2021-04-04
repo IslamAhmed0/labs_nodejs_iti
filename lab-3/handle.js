@@ -47,9 +47,33 @@ function remove(data) {
     });
     writeTodos(fileData);
 }
+//edit
+//edit
+function edit(data) {
+    let todo = readTodos(path);
+    todo.forEach((ele, index) => {
+        if (ele.id == data.id) {
+            editObject(todo, data, index);
+            console.log(`updated Succesfully ${data.id} `);
+            writeTodos(todo);
+
+        } else {
+            console.log(`fail ${data.id} `);
+        }
+    });
+
+}
+function list()
+{
+    listData=readTodos(path)
+    console.log(listData);
+
+}
 
 module.exports = {
     add,
     remove,
+    edit,
+    list
 
 };
