@@ -1,5 +1,6 @@
 const express = require('express')
-const UserModel = require("../models/user")
+const UserModel = require("../models/user");
+const bcrypt = require('bcrypt');
 const router = express.Router()
 
 
@@ -34,9 +35,12 @@ router.get('/:id' , (request , response) => {
     });
 })
 
-
+//const saltRounds=7;
 router.post('/' , ( request , response  ,next )=>{
+  // const salt = bcrypt.genSalt(saltRounds);
+    //request.body.password
     const { firstName ,lastName , email ,dob ,password ,gender ,phone } = request.body
+
     const user = new UserModel(request.body)
     console.log(request)
     user.save((err,user)=>{
@@ -46,6 +50,13 @@ router.post('/' , ( request , response  ,next )=>{
         }
         response.send(err)
     })
+})
+
+
+router.post('/login',async(request,response)=>{
+    const user =  UserModel.findOne({firstname:request.body.firstname})
+     console.log("login"+user)
+
 })
 
 

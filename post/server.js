@@ -6,6 +6,7 @@ require('./Database/db');
 
 
 const UserRoter = require('./router/user');
+const Userposts = require('./router/post');
 
 app.use(express.json());
 
@@ -20,6 +21,7 @@ app.get('/',(req,res,next)=>{
 })
 
 app.use(['/user','/users'], UserRoter);
+app.use(['/post','/posts'], Userposts);
 
 
 

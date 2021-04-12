@@ -15,10 +15,7 @@ const postSchema = new mongoose.Schema({
         type: String ,
         maxlength :70
     },
-    timestamps: { createdAt: 'created_at' },
-    updatedAt:{
 
-    },
     author :
         {
             type: mongoose.Schema.Types.ObjectId ,ref : "user"}
