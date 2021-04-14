@@ -36,7 +36,7 @@ router.get('/:id' , (request , response) => {
 })
 
 //const saltRounds=7;
-router.post('/' , ( request , response  ,next )=>{
+router.post('/register' , ( request , response  ,next )=>{
   // const salt = bcrypt.genSalt(saltRounds);
     //request.body.password
     const { firstName ,lastName , email ,dob ,password ,gender ,phone } = request.body
