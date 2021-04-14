@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const postSchema = new mongoose.Schema({
+const postSchema = mongoose.Schema(
+    {
     title :
         {
             type: String ,
@@ -14,13 +15,17 @@ const postSchema = new mongoose.Schema({
     tags:{
         type: String ,
         maxlength :70
-    },
+     },
 
     author :
         {
-            type: mongoose.Schema.Types.ObjectId ,ref : "user"}
+            type: mongoose.Schema.Types.ObjectId ,ref : "user"
+        }
 
 })
 
-const post = mongoose.model("post", postSchema)
-module.exports = post
+const post = mongoose.model("post", postSchema);
+post.on('index',(err)=>{
+    console.log("hhh"+err)
+})
+module.exports = post;
