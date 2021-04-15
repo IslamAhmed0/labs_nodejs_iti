@@ -55,7 +55,13 @@ router.post('/register' , ( request , response  ,next )=>{
 
 router.post('/login',async(request,response)=>{
     const user =  UserModel.findOne({firstname:request.body.firstname})
-     console.log("login"+user)
+     console.log("login"+user);
+    const token = user.generateToken();
+    response.json({
+        user,
+        token,
+        message:"hello"
+    })
 
 })
 

@@ -1,4 +1,10 @@
 const mongoose = require('mongoose');
+const jwt = require('jsontokens');
+const util = require('util');
+
+const signJWT=util.promisify(jwt.sign);
+const verifyJWT=util.promisify(jwt.verify)
+
 const userSchema = mongoose.Schema(
     {
         firstname:
@@ -40,6 +46,13 @@ const userSchema = mongoose.Schema(
 
     }
 )
+schema.methods.generateToken=function(){
+    const currentDocument =this;
+    return signJWT({
+        id:currentDocument.id,
+
+    },jwtSecret,{expiresIn:"2m"})
+}
 
 const users = mongoose.model("user" , userSchema)
 users.on('index',(err)=>{
